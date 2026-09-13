@@ -1,0 +1,44 @@
+paint_calculator.py
+# Name: Tashaun Horsley
+# Programming Project #1
+# This program calculates the amount and cost of paint
+# needed to paint the four walls of a rectangular room.
+
+# Get information from the user
+length = float(input("Enter the length of the room in feet: "))
+width = float(input("Enter the width of the room in feet: "))
+height = float(input("Enter the height of the room in feet: "))
+coats = int(input("Enter the number of coats of paint: "))
+coverage = float(input("Enter the paint coverage per gallon: "))
+cost_per_gallon = float(input("Enter the cost per gallon: $"))
+
+# Validate the input
+if length <= 0 or width <= 0 or height <= 0:
+    print("Error: Length, width, and height must be greater than 0.")
+elif coats < 1:
+    print("Error: Number of coats must be at least 1.")
+elif coverage <= 0:
+    print("Error: Coverage per gallon must be greater than 0.")
+elif cost_per_gallon <= 0:
+    print("Error: Cost per gallon must be greater than 0.")
+else:
+    # Calculate the total area of the four walls
+    total_wall_area = (2 * length * height) + (2 * width * height)
+
+    # Calculate total area including all coats
+    total_paint_area = total_wall_area * coats
+
+    # Calculate gallons of paint needed
+    gallons_needed = total_paint_area / coverage
+
+    # Calculate total cost
+    total_cost = gallons_needed * cost_per_gallon
+
+    # Display the results
+    print("\n========== PAINT ESTIMATE ==========")
+    print(f"Total Wall Area: {total_wall_area:.2f} square feet")
+    print(f"Total Area to Be Painted: {total_paint_area:.2f} square feet")
+    print(f"Gallons of Paint Required: {gallons_needed:.2f}")
+    print(f"Cost Per Gallon: ${cost_per_gallon:.2f}")
+    print(f"Total Estimated Paint Cost: ${total_cost:.2f}")
+    print("====================================")
